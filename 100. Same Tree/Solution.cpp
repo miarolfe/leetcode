@@ -12,9 +12,10 @@
 class Solution 
 {
 public:
-    int maxDepth(TreeNode* root) 
+    bool isSameTree(TreeNode* p, TreeNode* q) 
     {
-        if (!root) return 0;
-        return 1 + max(maxDepth(root->left), maxDepth(root->right));
+        if (!p && !q) return true;
+        if (!p || !q || p->val != q->val) return false;
+        return isSameTree(p->left, q->left) && isSameTree(p->right, q->right);        
     }
 };
